@@ -44,8 +44,7 @@ class UserData extends Component{
 		uibuilder.onChange('msg', (newVal) => {
 
 			this.setState({ 'msgRecvd': newVal });
-            this.forceUpdate();
-            
+
 			console.info('[uibuilder.onChange] msg received from Node-RED server:', newVal);
 		})
 
@@ -54,7 +53,6 @@ class UserData extends Component{
             console.info('[uibuilder.onChange] Updated count of received msgs:', newVal);
             
 			this.setState({ 'msgsReceived': newVal });
-            this.forceUpdate();
 		})
 
         // If we receive a control message from Node-RED, we can get the new data here - we pass it to a Vue variable
@@ -62,14 +60,12 @@ class UserData extends Component{
             console.info('[uibuilder.onChange:ctrlMsg] CONTROL msg received from Node-RED server:', newVal);
 
             this.setState({ 'msgCtrl': newVal });
-            this.forceUpdate();
         })
         // Updated count of control messages received
         uibuilder.onChange('msgsCtrl', (newVal) => {
             console.info('[uibuilder.onChange:msgsCtrl] Updated count of received CONTROL msgs:', newVal);
 
             this.setState({ 'msgsControl': newVal });
-            this.forceUpdate();
         })
         //#endregion ---- End of Trace Received Messages ---- //
 
@@ -80,14 +76,12 @@ class UserData extends Component{
             console.info('[uibuilder.onChange:sentMsg] msg sent to Node-RED server:', newVal);
 
             this.setState({ 'msgSent': newVal });
-            this.forceUpdate();
         })
         // Updated count of sent messages
         uibuilder.onChange('msgsSent', (newVal) => {
             console.info('[uibuilder.onChange:msgsSent] Updated count of msgs sent:', newVal);
 
             this.setState({ 'msgsSent': newVal });
-            this.forceUpdate();
         })
 
         // If we send a control message to Node-RED, we can get a copy of it here
@@ -95,14 +89,12 @@ class UserData extends Component{
             console.info('[uibuilder.onChange:sentCtrlMsg] Control message sent to Node-RED server:', newVal);
 
             this.setState({ 'msgCtrlSent': newVal });
-            this.forceUpdate();
         })
         // And we can get an updated count
         uibuilder.onChange('msgsSentCtrl', (newVal) => {
             console.info('[uibuilder.onChange:msgsSentCtrl] Updated count of CONTROL msgs sent:', newVal);
 
             this.setState({ 'msgsCtrlSent': newVal });
-            this.forceUpdate();
         })
         //#endregion ---- End of Trace Sent Messages ---- //
 
@@ -111,14 +103,12 @@ class UserData extends Component{
             console.info('[uibuilder.onChange:ioConnected] Socket.IO Connection Status Changed to:', newVal)
 
             this.setState({ 'socketConnectedState': newVal })
-            this.forceUpdate();
         })
         // If Server Time Offset changes
         uibuilder.onChange('serverTimeOffset', (newVal) =>{
             console.info('[uibuilder.onChange:serverTimeOffset] Offset of time between the browser and the server has changed to:', newVal)
 
             this.setState({ 'serverTimeOffset': newVal })
-            this.forceUpdate();
         })
 
         	//Manually send a message back to Node-RED after 2 seconds
@@ -162,11 +152,6 @@ class UserData extends Component{
 
 	}
 
-
-	shouldComponentUpdate(){
-		//ascomponentisnotlinkedtotheexternaldata,thereisnoneedinupdates
-		return false;
-	}
 }
 
 export default UserData
