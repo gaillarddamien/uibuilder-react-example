@@ -22,18 +22,18 @@ class UserData extends Component{
 
             socketConnectedState : false,
             serverTimeOffset     : '[unknown]',
-    
+
             msgRecvd    : '[Nothing]',
             msgsReceived: 0,
             msgCtrl     : '[Nothing]',
             msgsControl : 0,
-    
+
             msgSent     : '[Nothing]',
             msgsSent    : 0,
             msgCtrlSent : '[Nothing]',
-            msgsCtrlSent: 0,    
+            msgsCtrlSent: 0,
         }
-        
+
         /** You can use the following to help trace how messages flow back and forth.
          * You can then amend this processing to suite your requirements.
          */
@@ -51,7 +51,7 @@ class UserData extends Component{
         // As we receive new messages, we get an updated count as well
 		uibuilder.onChange('msgsReceived',(newVal) =>{
             console.info('[uibuilder.onChange] Updated count of received msgs:', newVal);
-            
+
 			this.setState({ 'msgsReceived': newVal });
 		})
 
@@ -133,11 +133,12 @@ class UserData extends Component{
                 <div className="d1">
                     <div>last Ctl Msg Received:</div>
                     <pre><code>{JSON.stringify(this.state.msgCtrl, null, 2)}</code></pre>
-                    <div># Control Msgs Received: {this.state.controlMsgsReceived}</div>
+                    <div># Control Msgs Received: {this.state.msgsControl}</div>
                 </div>
 
                 <div className="d1">
-                    <div>last Msg Sent: {this.state.lastMsgSent}</div>
+                    <div>last Msg Sent</div>
+                    <pre><code>{JSON.stringify(this.state.msgSent, null, 2)}</code></pre>
                     <div># msgs Sent: {this.state.msgsSent}</div>
                 </div>
 
