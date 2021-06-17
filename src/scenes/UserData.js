@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 //import ReactDOM from 'react-dom';
 //import { findDOMNode } from 'react-dom';
 
-import uibuilder from '../libs/uibuilderfe.js'
+import uibuilder from 'node-red-contrib-uibuilder/front-end/src/uibuilderfe'
 
 class UserData extends Component{
 	constructor(props){
